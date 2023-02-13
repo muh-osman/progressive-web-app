@@ -1,12 +1,12 @@
 const cashName = "v1";
 const assets = [
-    "/",
-    "/index.html",
-    "/css/bootstrap.css",
-    "/css/styles.css",
-    "/js/bootstrap.bundle.js",
-    "/js/app.js",
-    "/images/bootstrap-logo.svg",
+    "./",
+    "./index.html",
+    "./css/bootstrap.css",
+    "./css/styles.css",
+    "./js/bootstrap.bundle.js",
+    "./js/app.js",
+    "./images/bootstrap-logo.svg",
 ];
 
 
@@ -43,13 +43,15 @@ self.addEventListener("fetch", (fetchEvent)=>{
         caches.match(fetchEvent.request)
         .then((res)=>{
             return res || fetch(fetchEvent.request)
-            .then((fetchRes)=>{
-                return caches.open(cashName)
-                .then((cache)=>{
-                    cache.put(fetchEvent.request, fetchRes.clone())
-                    return fetchRes;
-                })
-            })
+
+            // .then((fetchRes)=>{
+            //     return caches.open(cashName)
+            //     .then((cache)=>{
+            //         cache.put(fetchEvent.request, fetchRes.clone())
+            //         return fetchRes;
+            //     })
+            // })
+
         })
     )
 })
